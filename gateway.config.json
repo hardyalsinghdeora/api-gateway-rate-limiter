@@ -1,0 +1,38 @@
+{
+  "trustProxy": false,
+  "onStoreError": "open",
+  "shutdownTimeoutMs": 10000,
+  "breaker": {
+    "failureThreshold": 5,
+    "windowMs": 10000,
+    "openMs": 30000
+  },
+  "routes": [
+    {
+      "prefix": "/api/orders",
+      "upstream": "http://localhost:4001",
+      "stripPrefix": true,
+      "timeoutMs": 5000,
+      "retry": { "attempts": 3, "baseDelayMs": 100, "maxDelayMs": 2000 },
+      "rateLimit": {
+        "algorithm": "token-bucket",
+        "capacity": 5,
+        "refillPerSecond": 1,
+        "keyBy": "api-key"
+      }
+    },
+    {
+      "prefix": "/api/catalog",
+      "upstream": "http://localhost:4001",
+      "stripPrefix": false,
+      "timeoutMs": 3000,
+      "retry": { "attempts": 2, "baseDelayMs": 50, "maxDelayMs": 500 },
+      "rateLimit": {
+        "algorithm": "sliding-window",
+        "limit": 60,
+        "windowMs": 60000,
+        "keyBy": "ip"
+      }
+    }
+  ]
+}
