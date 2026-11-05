@@ -5,11 +5,11 @@
 export interface Problem {
   status: number;
   title: string;
-  detail?: string;
+  detail?: string | undefined;
   /** The request path, which RFC 9457 calls the problem "instance". */
   instance: string;
   requestId: string;
-  headers?: Record<string, string>;
+  headers?: Record<string, string> | undefined;
 }
 
 export const PROBLEM_CONTENT_TYPE = 'application/problem+json';
