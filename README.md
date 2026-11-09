@@ -252,7 +252,7 @@ user with a `HEALTHCHECK` against `/healthz`.
 
 ## About
 
-Written by Hardyal Singh Deora — [hardyalsinghdeora.pages.dev](https://hardyalsinghdeora.pages.dev) ·
+Written by Hardyal Singh Deora — [hardyal.is-a.dev](https://hardyal.is-a.dev) ·
 [github.com/hardyalsinghdeora](https://github.com/hardyalsinghdeora) — as a reference implementation
 and portfolio sample of the gateway concerns (rate limiting, resilience, observability) that I care
 about in backend work. It is MIT licensed; use it as a starting point, not as a dependency.
